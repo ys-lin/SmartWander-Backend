@@ -7,7 +7,6 @@ import java.time.ZonedDateTime;
 import java.util.*;
 
 @Entity
-@Table(name = "trips")
 @Getter @Setter @NoArgsConstructor
 public class Trip {
     @Id
@@ -24,6 +23,5 @@ public class Trip {
     private ZonedDateTime endDate;
 
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
-    @OrderBy("startTime ASC")
-    private List<TripEvent> events = new ArrayList<>();
+    private List<TripItem> events = new ArrayList<>();
 }

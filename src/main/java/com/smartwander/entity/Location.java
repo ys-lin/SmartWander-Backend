@@ -5,7 +5,6 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Entity
-@Table(name = "locations")
 @Getter @Setter @NoArgsConstructor
 public class Location {
     @Id
@@ -22,10 +21,4 @@ public class Location {
 
     @DecimalMin("-180.0") @DecimalMax("180.0")
     private Double longitude;
-
-    // Prevents circular reference issues
-    @Override
-    public String toString() {
-        return name + " (ID: " + id + ")";
-    }
 }

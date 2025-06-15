@@ -6,10 +6,8 @@ import lombok.*;
 import java.time.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "event_type")
 @Getter @Setter @NoArgsConstructor
-public abstract class TripEvent {
+public class TripItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,7 +25,6 @@ public abstract class TripEvent {
     @Column(nullable = false)
     private ZonedDateTime endTime;
 
-    @ManyToOne
     @JoinColumn(name = "location_id") 
     private Location location;
 }
