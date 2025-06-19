@@ -25,6 +25,7 @@ public class TripItem {
     @Column(nullable = false)
     private ZonedDateTime endTime;
 
-    @JoinColumn(name = "location_id") 
+    @OneToOne
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
 }
