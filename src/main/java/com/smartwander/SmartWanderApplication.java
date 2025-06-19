@@ -1,4 +1,4 @@
-package com.smartWander;
+package com.smartwander;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
