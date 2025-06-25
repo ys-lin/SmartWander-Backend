@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: smartwander
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistent storage
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  valkey:
+    image: valkey/valkey:latest
+    container_name: valkey
+    command: valkey-server --save 60 1 --loglevel warning
+    volumes:
+      - valkey_data:/data  # Persistent storage
+    ports:
+      - "6379:6379"  # Default Redis port
+    restart: unless-stopped
+    networks:
+      - app-network
+
+volumes:
+  postgres_data: # PostgreSQL volume (WSL2-native storage)
+  valkey_data:    # Valkey volume (WSL2-native storage)
+
+networks:
+  app-network:    # Isolated network for secure communication
